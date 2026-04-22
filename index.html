@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geramel Tapis — Gym VA Work Samples</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-muted: #6b6b6b;
+    --ink-faint: #a8a8a8;
+    --surface: #faf9f6;
+    --card: #ffffff;
+    --accent: #2d5a3d;
+    --accent-light: #e8f2eb;
+    --accent-mid: #4a8a5e;
+    --border: #e8e4dc;
+    --gold: #c9973a;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--accent);
+    color: #fff;
+    padding: 72px 48px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.03) 40px,
+      rgba(255,255,255,0.03) 80px
+    );
+  }
+  .hero-inner { position: relative; max-width: 860px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.9);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .hero h1 span { color: #a8d4b4; }
+  .hero p {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.78);
+    max-width: 540px;
+    margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hero-meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .hero-meta-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* WORK CARD */
+  .work-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .work-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .card-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 20px;
+    padding: 28px 32px 0;
+  }
+  .card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .tag-ops { background: #e8f2eb; color: #2d5a3d; }
+  .tag-creds { background: #fff4e6; color: #a05a00; }
+  .tag-data { background: #e8eaf9; color: #2d3a8c; }
+  .tag-content { background: #fde8f0; color: #8c1d50; }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+  .card-body {
+    padding: 16px 32px 28px;
+  }
+  .card-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 20px;
+  }
+
+  /* FEATURES LIST */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .feature-pill {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--ink-muted);
+  }
+
+  /* CARD LINKS */
+  .card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .link-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+  .link-primary:hover { background: var(--accent-mid); }
+  .link-primary svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+  .link-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--accent-light);
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .link-secondary:hover { background: var(--accent-light); }
+  .link-secondary svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  /* NEWSLETTER GRID */
+  .newsletter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .newsletter-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    display: block;
+  }
+  .newsletter-item:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-mid);
+  }
+  .newsletter-item-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+  }
+  .newsletter-item-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .newsletter-item-desc {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 48px;
+    font-size: 13px;
+  }
+  .footer strong { color: rgba(255,255,255,0.85); }
+
+  @media (max-width: 600px) {
+    .hero { padding: 48px 24px 40px; }
+    .section { padding: 40px 24px; }
+    .card-top { grid-template-columns: 1fr; }
+    .card-body, .card-top { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Work Samples & Draft Portfolio</div>
+    <h1>Gym VA Tools &<br><span>Draft Work</span> by Geramel Tapis</h1>
+    <p>A collection of live draft tools built for gym owners — from task tracking and reporting, to metrics dashboards and client-ready newsletter samples.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Role</span>
+        <span class="hero-meta-value">Virtual Assistant — Gym & Studio</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Brand</span>
+        <span class="hero-meta-value">Super Sidekick</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Focus</span>
+        <span class="hero-meta-value">Buy back time for gym owners</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+
+  <!-- TASK TRACKER -->
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Operations & Reporting</h2>
+  </div>
+
+  <div class="work-card">
+    <div class="card-top">
+      <div>
+        <div class="card-tag tag-ops">&#9632; Operations Tool</div>
+        <h3 class="card-title">Gym VA Task Tracker</h3>
+        <span class="card-subtitle">Daily · Weekly · Monthly task management with SOD/EOD reporting</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">
+        A fully-featured task management tool built specifically for Gym VAs. Tracks all daily, weekly, and monthly tasks with priority levels, due dates, and statuses. Includes a dedicated Reporting tab for logging Start-of-Day (SOD) and End-of-Day (EOD) reports — keeping gym owners fully informed without the back-and-forth.
+      </p>
+      <div class="features">
+        <span class="feature-pill">Task categories (Daily / Weekly / Monthly)</span>
+        <span class="feature-pill">Priority levels</span>
+        <span class="feature-pill">Recurring tasks</span>
+        <span class="feature-pill">SOD &amp; EOD reporting</span>
+        <span class="feature-pill">CSV / TXT / HTML export</span>
+        <span class="feature-pill">Philippine &amp; Australian time display</span>
+      </div>
+      <div class="card-links">
+        <a href="https://getapis.github.io/Gym-VA-Task-Tracker-Geramel-Tapis/" target="_blank" class="link-primary">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Live Tool
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" style="margin: 0 0 40px;">
+
+  <!-- PORTFOLIO / CREDENTIALS -->
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Kickoff & Credentials</h2>
+  </div>
+
+  <div class="work-card">
+    <div class="card-top">
+      <div>
+        <div class="card-tag tag-creds">&#9632; Client Presentation</div>
+        <h3 class="card-title">Gym VA Portfolio</h3>
+        <span class="card-subtitle">Credentials & value overview for gym owner kickoff meetings</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">
+        A client-facing portfolio designed to be shared with gym owners during the kickoff meeting. Presents credentials, expertise, and the VA's value proposition — efficiently and professionally — so gym owners can evaluate the fit quickly without lengthy calls. The goal: save their time from day one.
+      </p>
+      <div class="features">
+        <span class="feature-pill">Credentials overview</span>
+        <span class="feature-pill">Service scope</span>
+        <span class="feature-pill">Designed for gym/studio owners</span>
+        <span class="feature-pill">Kickoff-ready format</span>
+      </div>
+      <div class="card-links">
+        <a href="https://getapis.github.io/Portforlio-Sidekick/indexport.html" target="_blank" class="link-primary">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" style="margin: 0 0 40px;">
+
+  <!-- METRICS DASHBOARD -->
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Metrics & Reporting Dashboard</h2>
+  </div>
+
+  <div class="work-card">
+    <div class="card-top">
+      <div>
+        <div class="card-tag tag-data">&#9632; Data Dashboard</div>
+        <h3 class="card-title">Gym / Studio Metrics Dashboard</h3>
+        <span class="card-subtitle">Daily scoreboard · Weekly KPIs · Rollover calculation</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">
+        A draft metrics dashboard built for extracting and presenting the numbers gym owners actually need. Structured across three tabs: a <strong>Dashboard</strong> (filled weekly every Friday), a <strong>Scoreboard</strong> (daily number tracking), and a <strong>Rollover</strong> tab that calculates how many trial/starter members converted to full memberships — a critical metric for any gym's retention strategy.
+      </p>
+      <div class="features">
+        <span class="feature-pill">Weekly dashboard (Friday fill)</span>
+        <span class="feature-pill">Daily scoreboard</span>
+        <span class="feature-pill">Rollover / trial-to-membership calc</span>
+        <span class="feature-pill">Ready-to-extract reporting</span>
+        <span class="feature-pill">Studio &amp; gym ready</span>
+      </div>
+      <div class="card-links">
+        <a href="https://getapis.github.io/Metric-Dashboard/GRN_Metrics_Dashboard.html" target="_blank" class="link-primary">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Dashboard
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" style="margin: 0 0 40px;">
+
+  <!-- NEWSLETTERS -->
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Newsletter Draft Samples</h2>
+  </div>
+
+  <div class="work-card">
+    <div class="card-top">
+      <div>
+        <div class="card-tag tag-content">&#9632; Content Samples</div>
+        <h3 class="card-title">Gym Newsletter Templates</h3>
+        <span class="card-subtitle">Ready-to-send newsletter drafts for gyms without dedicated marketing staff</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="card-desc">
+        Draft newsletter samples created for gym owners who don't have a dedicated marketing person to handle member communications. These templates can be customized and sent as-is — reducing the burden on gym owners and keeping members engaged consistently.
+      </p>
+      <div class="newsletter-grid">
+        <a href="https://getapis.github.io/Gym-News-Letter/#" target="_blank" class="newsletter-item">
+          <div class="newsletter-item-label">Sample 01</div>
+          <div class="newsletter-item-name">General Newsletter</div>
+          <div class="newsletter-item-desc">Base template for gym updates</div>
+        </a>
+        <a href="https://getapis.github.io/Gym-News-Letter/velve.html" target="_blank" class="newsletter-item">
+          <div class="newsletter-item-label">Sample 02</div>
+          <div class="newsletter-item-name">Velve Style</div>
+          <div class="newsletter-item-desc">Alternative brand layout</div>
+        </a>
+        <a href="https://getapis.github.io/Gym-News-Letter/pump.html" target="_blank" class="newsletter-item">
+          <div class="newsletter-item-label">Sample 03</div>
+          <div class="newsletter-item-name">Pump Edition</div>
+          <div class="newsletter-item-desc">Energy-forward gym format</div>
+        </a>
+      </div>
+      <div class="card-links">
+        <a href="https://getapis.github.io/Gym-News-Letter/#" target="_blank" class="link-secondary">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Sample 1
+        </a>
+        <a href="https://getapis.github.io/Gym-News-Letter/velve.html" target="_blank" class="link-secondary">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Sample 2
+        </a>
+        <a href="https://getapis.github.io/Gym-News-Letter/pump.html" target="_blank" class="link-secondary">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          View Sample 3
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <strong>Geramel Tapis</strong> &nbsp;·&nbsp; Gym Virtual Assistant &nbsp;·&nbsp; Super Sidekick &nbsp;·&nbsp; Draft Work Samples
+</div>
+
+</body>
+</html>
